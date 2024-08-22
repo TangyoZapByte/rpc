@@ -1,0 +1,44 @@
+package com.tyz.web.admin.controller;
+
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tyz.common.result.Result;
+import com.tyz.model.entity.Transaction;
+import com.tyz.model.enums.TransactionState;
+import com.tyz.web.admin.service.TransactionService;
+import com.tyz.web.admin.vo.TransactionVo;
+import com.tyz.web.admin.vo.WithdrawOrderVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/transaction")
+public class TransactionController {
+    @Autowired
+    private TransactionService transactionService;
+
+//    @PostMapping("/delete_purchase")
+//    public Result deletePurchase(@RequestParam Long id){
+//        transactionService.removeById(id);
+//        return Result.ok();
+//    }
+
+    @GetMapping("/query")
+    public Result<IPage<TransactionVo>> queryTransaction(@RequestParam long current, @RequestParam long size, TransactionVo transactionVo){
+        IPage<TransactionVo> page = new Page<>(current,size);
+        IPage<TransactionVo> result = transactionService.pageTransactionByQuery(page,transactionVo);
+        return Result.ok(result);
+    }
+
+    @PostMapping("/delete_purchase")
+    public Result deletePurchase(@RequestParam WithdrawOrderVo withdrawOrderVo, @RequestParam TransactionState transactionState){
+        LambdaUpdateWrapper<Transaction> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.eq(Transaction::getTransactionId,withdrawOrderVo.getTransactionId()).eq(Transaction::getFundId,withdrawOrderVo.getFundId());
+        updateWrapper.set(Transaction::getTransactionState,transactionState);
+        transactionService.update(updateWrapper);
+        return Result.ok();
+    }
+}
