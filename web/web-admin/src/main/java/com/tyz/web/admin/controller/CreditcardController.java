@@ -18,7 +18,7 @@ public class CreditcardController {
             @RequestParam("card_number") String cardNumber) {
         Creditcard creditcard = new Creditcard();
         creditcard.setAccountId(Integer.valueOf(accountId));
-        creditcard.setCreditcardId(Integer.valueOf(cardNumber));
+        creditcard.setCreditcardId(cardNumber);
         Creditcard creditcard1 = creditcardService.getOneByCardNumberAndAccountId(creditcard);
         return Result.ok(creditcard1);
     }

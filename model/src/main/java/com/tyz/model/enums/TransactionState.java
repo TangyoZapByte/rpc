@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TransactionState implements BaseEnum{
-
-    Transacting(0, "交易中"),
-    NOT_Transacting(1, "已撤销");
+    WITHDRAW_TRANSACTING(2,"已撤单"),
+    DONE_TRANSACTING(1, "已完成"),
+    NOT_TRANSACTING(0, "未完成");
 
     @EnumValue
     @JsonValue

@@ -7,6 +7,9 @@ import com.tyz.web.admin.service.DailyfundnavService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 /**
 * @author tangyizuo
 * @description 针对表【dailyfundnav】的数据库操作Service实现
@@ -21,6 +24,11 @@ public class DailyfundnavServiceImpl extends ServiceImpl<DailyfundnavMapper, Dai
     @Override
     public Dailyfundnav getDailynav(Dailyfundnav dailyfundnav) {
         return dailyfundnavMapper.getDailynav(dailyfundnav);
+    }
+
+    @Override
+    public List<Dailyfundnav> listByDate(Date date) {
+        return dailyfundnavMapper.listByDate(date);
     }
 }
 

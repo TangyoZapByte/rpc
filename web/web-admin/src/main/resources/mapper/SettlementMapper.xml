@@ -16,5 +16,11 @@
         settlement_id,settlement_date,settlement_result,
         settlement_state,user_id
     </sql>
+    <select id="listSettlementByDate" resultType="com.tyz.model.entity.Settlement">
+        select settlement_id,settlement_date,settlement_result,
+               settlement_state,user_id
+        from settlement
+        where settlement_date  = #{date}
+    </select>
 
 </mapper>

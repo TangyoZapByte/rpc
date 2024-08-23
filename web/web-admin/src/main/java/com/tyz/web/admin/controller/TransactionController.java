@@ -12,6 +12,7 @@ import com.tyz.web.admin.vo.WithdrawOrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,11 +35,18 @@ public class TransactionController {
     }
 
     @PostMapping("/delete_purchase")
-    public Result deletePurchase(@RequestParam WithdrawOrderVo withdrawOrderVo, @RequestParam TransactionState transactionState){
+    public Result deletePurchase(@RequestParam WithdrawOrderVo withdrawOrderVo){
+        TransactionState transactionState = TransactionState.WITHDRAW_TRANSACTING;//改成撤单
         LambdaUpdateWrapper<Transaction> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(Transaction::getTransactionId,withdrawOrderVo.getTransactionId()).eq(Transaction::getFundId,withdrawOrderVo.getFundId());
         updateWrapper.set(Transaction::getTransactionState,transactionState);
         transactionService.update(updateWrapper);
         return Result.ok();
+    }
+
+    @GetMapping("/getTransactionInformation")
+    public Result<List<Transaction>> getTransactionInformation(Date date){
+        List<Transaction> list = transactionService.listTransactionByDate(date);
+        return Result.ok(list);
     }
 }
