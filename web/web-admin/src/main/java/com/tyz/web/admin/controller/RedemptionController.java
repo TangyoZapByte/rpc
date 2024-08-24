@@ -18,7 +18,7 @@ public class RedemptionController {
     public Result<Transaction>createPurchase(
             @RequestParam Integer accountId,
             @RequestParam Integer fundId,
-            @RequestParam Double redemptionAmount) {
+            @RequestParam Integer redemptionAmount) {
 
         return redemptionService.createRedemption(accountId, fundId, redemptionAmount);
     }

@@ -4,5 +4,5 @@ import com.tyz.common.result.Result;
 import com.tyz.model.entity.Transaction;
 
 public interface RedemptionService {
-    Result<Transaction> createRedemption(Integer accountId, Integer fundId, Double redemptionAmount);
+    Result<Transaction> createRedemption(Integer accountId, Integer fundId, Integer redemptionAmount);
 }

@@ -33,7 +33,7 @@ public class RedemptionServiceImpl implements RedemptionService {
     @Autowired
     private CustomerService customerService;
 
-    public Result<Transaction> createRedemption(Integer accountId, Integer fundId, Double redemptionAmount){
+    public Result<Transaction> createRedemption(Integer accountId, Integer fundId, Integer redemptionAmount){
         CustomerInfoVo customer = customerService.getCustomerByAccountId(accountId);
         Fund fund = fundService.getById(fundId);
         if (fund == null||customer == null) {
