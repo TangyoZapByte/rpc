@@ -12,6 +12,7 @@ import com.tyz.web.admin.vo.WithdrawOrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -40,5 +41,11 @@ public class TransactionController {
         updateWrapper.set(Transaction::getTransactionState,transactionState);
         transactionService.update(updateWrapper);
         return Result.ok();
+    }
+
+    @GetMapping("/getTransactionInformation")
+    public Result<List<Transaction>> getTransactionInformation(Date date){
+        List<Transaction> list = transactionService.listTransactionByDate(date);
+        return Result.ok(list);
     }
 }

@@ -11,6 +11,9 @@ import com.tyz.web.admin.vo.TransactionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 /**
 * @author tangyizuo
 * @description 针对表【transaction】的数据库操作Service实现
@@ -30,6 +33,11 @@ public class TransactionServiceImpl extends ServiceImpl<TransactionMapper, Trans
     @Override
     public IPage<Settlement> settlementSubscriptionOrRedemption(IPage<Settlement> page,Long id) {
         return transactionMapper.settlementSubscriptionOrRedemption(page,id);
+    }
+
+    @Override
+    public List<Transaction> listTransactionByDate(Date date) {
+        return transactionMapper.listTransactionByDate(date);
     }
 }
 

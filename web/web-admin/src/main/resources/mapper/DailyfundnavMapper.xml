@@ -21,4 +21,10 @@
         from dailyfundnav
         where fund_id = #{dailyfundnav.fundId} and nav_date = #{dailyfundnav.navDate}
     </select>
+    <select id="listByDate" resultType="com.tyz.model.entity.Dailyfundnav">
+        select nav_id,fund_id,nav_date,
+               fund_nav
+        from dailyfundnav
+        where nav_date = #{date}
+    </select>
 </mapper>

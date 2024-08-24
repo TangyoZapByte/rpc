@@ -8,11 +8,18 @@ import com.tyz.web.admin.service.SettlementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 @Service
 public class SettlementServiceImpl extends ServiceImpl<SettlementMapper, Settlement>
     implements SettlementService {
 
+    @Autowired
+    private SettlementMapper settlementMapper;
 
-
-
+    @Override
+    public List<Settlement> listSettlementByDate(Date date) {
+        return settlementMapper.listSettlementByDate(date);
+    }
 }

@@ -61,4 +61,11 @@
                  left join customer c on c.customer_id = a.customer_id
         where t.transaction_type = #{id} and t.transaction_state = 1;
     </select>
+    <select id="listTransactionByDate" resultType="com.tyz.model.entity.Transaction">
+        select transaction_id,account_id,fund_id,
+               transaction_type,transaction_amount,transaction_share,
+               transaction_date,transaction_state
+        from transaction
+        where transaction_date = #{date}
+    </select>
 </mapper>
