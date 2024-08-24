@@ -16,10 +16,10 @@
         creditcard_id,account_id,bank,
         balance,password
     </sql>
-    <select id="getOneByCardNumberAndAccountId" resultType="com.tyz.model.entity.Creditcard">
+    <select id="getOneByCardNumberAndAccountId" parameterType="com.tyz.model.entity.Creditcard" resultType="com.tyz.model.entity.Creditcard">
         select creditcard_id,account_id,bank,
                balance
         from creditcard
-        where creditcard_id = #{creditcard.creditcardId} and account_id = #{creditcard.accountId}
+        where creditcard_id = #{creditcardId} and account_id = #{accountId}
     </select>
 </mapper>

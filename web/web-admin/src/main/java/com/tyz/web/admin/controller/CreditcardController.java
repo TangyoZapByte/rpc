@@ -1,6 +1,7 @@
 package com.tyz.web.admin.controller;
 
 import com.tyz.common.result.Result;
+import com.tyz.common.result.ResultCodeEnum;
 import com.tyz.model.entity.Creditcard;
 import com.tyz.web.admin.service.CreditcardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,11 @@ public class CreditcardController {
         creditcard.setAccountId(Integer.valueOf(accountId));
         creditcard.setCreditcardId(Integer.valueOf(cardNumber));
         Creditcard creditcard1 = creditcardService.getOneByCardNumberAndAccountId(creditcard);
-        return Result.ok(creditcard1);
+        if (creditcard1 != null) {
+            return Result.ok(creditcard1);
+        } else {
+            return Result.fail(ResultCodeEnum.DATA_ERROR.getCode(), "找不到银行卡");
+        }
     }
 
     @PostMapping("/update")

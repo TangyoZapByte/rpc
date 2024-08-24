@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import static org.checkerframework.checker.units.UnitsTools.min;
@@ -55,5 +56,10 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account>
     @Override
     public IPage<Account> pageAccountByCustomerId(IPage<Account> page, Long customerId) {
         return accountMapper.pageAccountByCustomerId(page,customerId);
+    }
+
+    @Override
+    public List<String> getCardNumbersByAccountId(Integer accountId) {
+        return accountMapper.findCardNumbersByAccountId(accountId);
     }
 }

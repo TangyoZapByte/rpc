@@ -15,9 +15,9 @@
         hold_id,account_id,fund_id,
         fund_share
     </sql>
-    <select id="selectFundShareByAccountAndFundId" resultType="com.tyz.model.entity.Hold">
+    <select id="selectFundShareByAccountAndFundId" parameterType="com.tyz.web.admin.vo.HoldVo" resultType="com.tyz.model.entity.Hold">
         select hold_id,account_id,fund_id,fund_share
         from hold
-        where account_id = #{holdVo.AccountId} and fund_id = #{holdVo.FundId};
+        where account_id = #{AccountId} and fund_id = #{FundId};
     </select>
 </mapper>

@@ -35,7 +35,7 @@ public class Hold implements Serializable {
      * 
 持有份额
      */
-    private Integer fundShare;
+    private Double fundShare;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

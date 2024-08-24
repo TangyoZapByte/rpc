@@ -22,4 +22,9 @@
         from account
         where customer_id = #{customerId}
     </select>
+    <select id="findCardNumbersByAccountId" resultType="java.lang.String">
+        SELECT creditcard_id
+        FROM creditcard
+        WHERE account_id = #{accountId}
+    </select>
 </mapper>
