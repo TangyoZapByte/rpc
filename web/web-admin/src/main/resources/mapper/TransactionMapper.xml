@@ -28,7 +28,7 @@
         left join transaction t on t.account_id = a.account_id
         left join customer c on c.customer_id = a.customer_id
         <where>
-            t.transaction_state = 0
+            1 = 1
             <if test="transactionVo.TransactionId != null">
                 and t.transaction_id LIKE CONCAT('%', #{transactionVo.TransactionId}, '%')
             </if>
@@ -50,6 +50,9 @@
             <if test="transactionVo.TransactionDate != null">
                 and t.transaction_date = #{transactionVo.TransactionDate}
             </if>
+            <if test="transactionVo.TransactionState != null">
+                and t.transaction_state = #{transactionVo.TransactionState}
+            </if>
         </where>
     </select>
     <select id="settlementSubscriptionOrRedemption" resultType="com.tyz.model.entity.Settlement">
@@ -59,7 +62,7 @@
         from account a
                  left join transaction t on t.account_id = a.account_id
                  left join customer c on c.customer_id = a.customer_id
-        where t.transaction_type = #{id} and t.transaction_state = 1;
+        where t.transaction_type = #{id} and t.transaction_state = 0;
     </select>
     <select id="listTransactionByDate" resultType="com.tyz.model.entity.Transaction">
         select transaction_id,account_id,fund_id,

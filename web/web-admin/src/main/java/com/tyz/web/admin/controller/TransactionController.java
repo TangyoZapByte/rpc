@@ -35,7 +35,8 @@ public class TransactionController {
     }
 
     @PostMapping("/delete_purchase")
-    public Result deletePurchase(@RequestParam WithdrawOrderVo withdrawOrderVo, @RequestParam TransactionState transactionState){
+    public Result deletePurchase(@RequestParam WithdrawOrderVo withdrawOrderVo){
+        TransactionState transactionState = TransactionState.WITHDRAW_TRANSACTING;//改成撤单
         LambdaUpdateWrapper<Transaction> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(Transaction::getTransactionId,withdrawOrderVo.getTransactionId()).eq(Transaction::getFundId,withdrawOrderVo.getFundId());
         updateWrapper.set(Transaction::getTransactionState,transactionState);
