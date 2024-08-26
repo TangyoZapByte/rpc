@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bffcfa0-2010-47b9-a6ff-321036c74c81" name="Changes" comment="拦截器">
+    <list default="true" id="9bffcfa0-2010-47b9-a6ff-321036c74c81" name="Changes" comment="交易查询更改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/tyz/model/enums/TransactionState.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/tyz/model/enums/TransactionState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/web-admin/src/main/java/com/tyz/web/admin/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/web-admin/src/main/java/com/tyz/web/admin/controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/web-admin/src/main/resources/mapper/TransactionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/web-admin/src/main/resources/mapper/TransactionMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +139,10 @@
       <workItem from="1724516904717" duration="124000" />
       <workItem from="1724559151471" duration="1736000" />
       <workItem from="1724586430769" duration="19000" />
-      <workItem from="1724590578977" duration="1919000" />
+      <workItem from="1724590578977" duration="2176000" />
+      <workItem from="1724592777464" duration="116000" />
+      <workItem from="1724592902809" duration="665000" />
+      <workItem from="1724642273328" duration="677000" />
     </task>
     <task id="LOCAL-00001" summary="分模块的公寓项目">
       <option name="closed" value="true" />
@@ -200,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724586008320</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="交易查询更改">
+      <option name="closed" value="true" />
+      <created>1724592605050</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724592605050</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +229,7 @@
     <MESSAGE value="分模块的公寓项目" />
     <MESSAGE value="rpc" />
     <MESSAGE value="拦截器" />
-    <option name="LAST_COMMIT_MESSAGE" value="拦截器" />
+    <MESSAGE value="交易查询更改" />
+    <option name="LAST_COMMIT_MESSAGE" value="交易查询更改" />
   </component>
 </project>
