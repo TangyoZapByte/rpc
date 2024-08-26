@@ -2,16 +2,24 @@ package com.tyz.web.admin.controller;
 
 import com.tyz.common.result.Result;
 import com.tyz.common.result.ResultCodeEnum;
+import com.tyz.model.entity.Account;
 import com.tyz.model.entity.Creditcard;
+import com.tyz.web.admin.service.AccountService;
 import com.tyz.web.admin.service.CreditcardService;
+import com.tyz.web.admin.vo.AccountRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/creditcard")
 public class CreditcardController {
     @Autowired
     private CreditcardService creditcardService;
+
+    @Autowired
+    private AccountService accountService;
 
     @GetMapping("/balance")
     public Result<Creditcard> balance(
@@ -32,5 +40,11 @@ public class CreditcardController {
     public Result updateCreditcard(@RequestBody Creditcard creditcard){
         creditcardService.saveOrUpdate(creditcard);
         return Result.ok();
+    }
+
+    @GetMapping("/queryAccountByID")
+    public Result<List<AccountRequest>> queryAccountByID(Long id){
+        List<AccountRequest> list = accountService.queryAccountByID(id);
+        return Result.ok(list);
     }
 }

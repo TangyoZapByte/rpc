@@ -9,6 +9,7 @@ import com.tyz.model.entity.Customer;
 import com.tyz.web.admin.mapper.AccountMapper;
 import com.tyz.web.admin.mapper.CustomerMapper;
 import com.tyz.web.admin.service.AccountService;
+import com.tyz.web.admin.vo.AccountRequest;
 import com.tyz.web.admin.vo.CreateAccountVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,5 +62,10 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account>
     @Override
     public List<String> getCardNumbersByAccountId(Integer accountId) {
         return accountMapper.findCardNumbersByAccountId(accountId);
+    }
+
+    @Override
+    public List<AccountRequest> queryAccountByID(Long id) {
+        return accountMapper.queryAccountByID(id);
     }
 }
