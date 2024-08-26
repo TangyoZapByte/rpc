@@ -3,6 +3,7 @@ package com.tyz.web.admin.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tyz.common.result.Result;
+import com.tyz.common.result.ResultCodeEnum;
 import com.tyz.model.entity.Account;
 import com.tyz.model.entity.Customer;
 import com.tyz.model.entity.User;
@@ -10,6 +11,7 @@ import com.tyz.web.admin.service.AccountService;
 import com.tyz.web.admin.service.CustomerService;
 import com.tyz.web.admin.service.UserService;
 import com.tyz.web.admin.vo.CreateAccountVo;
+import com.tyz.web.admin.vo.CustomerInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +48,16 @@ public class UserController {
         IPage<Customer> result = customerService.pageCustomerByQuery(page,findCustomer);
 
         return Result.ok(result);
+    }
+
+    @GetMapping("/query")
+    public Result<CustomerInfoVo> query(@RequestParam Integer accountId) {
+        CustomerInfoVo customer = customerService.getCustomerByAccountId(accountId);
+        if (customer != null) {
+            return Result.ok(customer);
+        } else {
+            return Result.fail(ResultCodeEnum.ADMIN_CUSTOMER_NOT_EXIST_ERROR.getCode(), "客户不存在");
+        }
     }
 
     @GetMapping("/queryAccountByCustomerId")

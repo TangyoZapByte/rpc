@@ -8,6 +8,7 @@ import com.tyz.common.result.ResultCodeEnum;
 import com.tyz.model.entity.Customer;
 import com.tyz.web.admin.mapper.CustomerMapper;
 import com.tyz.web.admin.service.CustomerService;
+import com.tyz.web.admin.vo.CustomerInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,9 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     @Override
     public IPage<Customer> pageCustomerByQuery(IPage<Customer> page, Customer findCustomer) {
         return customerMapper.pageCustomerByQuery(page,findCustomer);
+    }
+
+    public CustomerInfoVo getCustomerByAccountId(Integer accountId) {
+        return customerMapper.findCustomerByAccountId(accountId);
     }
 }
