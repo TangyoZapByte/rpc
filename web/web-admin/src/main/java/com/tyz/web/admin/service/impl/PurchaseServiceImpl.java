@@ -34,7 +34,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     public Result<Transaction> createPurchase(Integer accountId, String cardNumber, Integer fundId, Double purchaseAmount) {
         Creditcard creditcard = new Creditcard();
         creditcard.setAccountId(accountId);
-        creditcard.setCreditcardId(Integer.valueOf(cardNumber));
+        creditcard.setCreditcardId(cardNumber);
         Creditcard creditcard1 = creditcardService.getOneByCardNumberAndAccountId(creditcard);
         if (creditcard1 == null) {
             return Result.fail(ResultCodeEnum.DATA_ERROR.getCode(), "银行卡信息不存在");
@@ -66,7 +66,14 @@ public class PurchaseServiceImpl implements PurchaseService {
 
         int result = purchaseMapper.insertPurchase(purchase);
         if (result > 0) {
-            return Result.ok(purchase);
+            Double newBalance = Double.parseDouble(creditcard1.getBalance())-purchaseAmount;
+            boolean balanceUpdated = creditcardService.updateCardBalance(cardNumber, newBalance);
+
+            if (balanceUpdated) {
+                return Result.ok(purchase);
+            } else {
+                return Result.fail(ResultCodeEnum.SERVICE_ERROR.getCode(), "余额更新失败");
+            }
         } else {
             return Result.fail(ResultCodeEnum.SERVICE_ERROR.getCode(), "申购申请失败");
         }

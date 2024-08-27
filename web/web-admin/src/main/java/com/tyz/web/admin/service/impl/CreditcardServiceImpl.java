@@ -16,4 +16,9 @@ public class CreditcardServiceImpl extends ServiceImpl<CreditcardMapper, Creditc
     public Creditcard getOneByCardNumberAndAccountId(Creditcard creditcard) {
         return creditcardMapper.getOneByCardNumberAndAccountId(creditcard);
     }
+    @Override
+    public boolean updateCardBalance(String cardNumber, Double newBalance) {
+        int updatedRows = creditcardMapper.updateBalanceByCardNumber(cardNumber, newBalance.toString());
+        return updatedRows > 0;
+    }
 }

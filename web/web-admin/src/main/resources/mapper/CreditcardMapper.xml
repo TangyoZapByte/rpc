@@ -22,4 +22,9 @@
         from creditcard
         where creditcard_id = #{creditcardId} and account_id = #{accountId}
     </select>
+    <update id="updateBalanceByCardNumber">
+        UPDATE creditcard
+        SET balance = #{newBalance}
+        WHERE creditcard_id = #{cardNumber}
+    </update>
 </mapper>

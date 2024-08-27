@@ -5,4 +5,5 @@ import com.tyz.model.entity.Creditcard;
 
 public interface CreditcardService extends IService<Creditcard> {
     Creditcard getOneByCardNumberAndAccountId(Creditcard creditcard);
+    boolean updateCardBalance(String cardNumber, Double newBalance);
 }

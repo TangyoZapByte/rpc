@@ -5,4 +5,6 @@ import com.tyz.model.entity.Creditcard;
 
 public interface CreditcardMapper extends BaseMapper<Creditcard> {
     Creditcard getOneByCardNumberAndAccountId(Creditcard creditcard);
+
+    int updateBalanceByCardNumber(String cardNumber, String newBalance);
 }
